@@ -13,7 +13,7 @@ export default function App() {
         `https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json`
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error(`Failed to fetch data;${response.status}`);
       }
       const data = await response.json();
       const startIndex = (page - 1) * 10;
