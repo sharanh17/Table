@@ -22,7 +22,8 @@ export default function App() {
       setEmployees(pageData);
       setTotalPages(Math.ceil(data.length / 10));
     } catch (error) {
-      alert("Failed to fetch data");
+      console.error("Error fetching data:", error);
+
     }
   };
 
