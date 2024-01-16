@@ -12,21 +12,24 @@ export default function App() {
       const response = await fetch(
         `https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json`
       );
+  
       if (!response.ok) {
-        throw new Error(`Failed to fetch data;${response.status}`);
+        throw new Error(`Failed to fetch data; ${response.status}`);
       }
+  
       const data = await response.json();
       const startIndex = (page - 1) * 10;
       const endIndex = startIndex + 10;
       const pageData = data.slice(startIndex, endIndex);
+  
       setEmployees(pageData);
       setTotalPages(Math.ceil(data.length / 10));
     } catch (error) {
       console.error("Error:", error.message);
       alert("Failed to fetch data. Please try again.");
-
     }
   };
+  
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
